@@ -6,6 +6,9 @@ name = "pypi"
 [packages]
 fastapi = "*"
 google-generativeai = "*"
+torch = "*"
+sentencepiece = "*"
+transformers = "*"
 
 [dev-packages]
 

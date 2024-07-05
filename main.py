@@ -6,7 +6,7 @@ from models.description_response import DescriptionResponse
 from models.description_request import DescriptionRequest
 from models.ai_model_input import AIModelInput
 from utils.methods import generate_id
-from ai.gemini import generate_description
+from ai.google_flan_t5 import generate_ai_description
 
 app = FastAPI()
 logger = get_logger(name="API Logger")
@@ -24,14 +24,15 @@ async def home():
 @app.post(
     "/create",
     response_model=DescriptionResponse,
-    description="hello this is some description",
+    description="Send your product malformed details to this endpoint and received the formatted output.",
 )
 async def description(product: DescriptionRequest):
     product_dict = product.model_dump()
-    ai_input_dict = AIModelInput(**product_dict)
+    ai_input = AIModelInput(**product_dict)
 
-    description_res = generate_description(ai_input_dict.model_dump())
-    print(f"Description length: {len(description_res)}")
+    prompt = f"{ai_input.model_dump_json()} using this information from json data write the product description in 3 to 5 lines of plain text paragraph."
+
+    description_res = generate_ai_description(prompt)
 
     id = generate_id()
     product_dict["id"] = id

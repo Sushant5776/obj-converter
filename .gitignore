@@ -4,3 +4,4 @@ __pycache__
 requests.http
 *.log
 .venv
+output.json
