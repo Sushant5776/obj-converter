@@ -9,6 +9,7 @@ google-generativeai = "*"
 torch = "*"
 sentencepiece = "*"
 transformers = "*"
+colorama = "*"
 
 [dev-packages]
 
