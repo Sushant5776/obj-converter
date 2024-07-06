@@ -11,6 +11,7 @@ class DescriptionResponse(DataFields):
     title: str
     description: str
     imageUrl: HttpUrl
+    tags: str
 
     # MIN_TITLE_LENGTH: ClassVar[int] = 3
     # MAX_TITLE_LENGTH: ClassVar[int] = 64

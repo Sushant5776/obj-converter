@@ -5,3 +5,5 @@ requests.http
 *.log
 .venv
 output.json
+run.py
+data.pkls

@@ -41,11 +41,19 @@ async def description(product: DescriptionRequest):
 
     if name:
         product_dict["title"] = name
+        product_dict["tags"] = ", ".join(name.split())
 
     if "images" in product_dict and type(product_dict["images"]) is list:
         product_dict["imageUrl"] = product_dict["images"][0]
 
     if "description" in product_dict and type(product_dict["description"]) is list:
+        product_dict["tags"] = (
+            product_dict["tags"]
+            + ", "
+            + ", ".join(
+                [list(desc.values())[0] for desc in product_dict["description"]]
+            )
+        )
         product_dict["description"] = description_res
 
     return DescriptionResponse(**product_dict)
