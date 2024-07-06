@@ -1,7 +1,6 @@
 import json
 from requests import request
 from time import time
-from math import ceil
 from colorama import Fore, Style
 import pickle
 
